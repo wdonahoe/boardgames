@@ -1,5 +1,5 @@
 <div class="container" ng-controller="GamesController">
-    <input type="text" name="search" ng-model="nameFilter" />
+    <label>Search for a game!</label><input type="text" name="search" ng-model="nameFilter" />
     <ul ng-repeat="game in games | filter: searchFilter">
    		<li><a href="#/{{game.objectid}}">{{game.objectname}}</a></li>
     </ul>
