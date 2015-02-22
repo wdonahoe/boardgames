@@ -10,14 +10,16 @@ var db = new sqlite3.Database('db/bgg.sqlite', function(err){
     console.log("Connected to sqlite3 database bgg")
 })
 
+var query ="select objectname, games.objectid, rank, playingtime, minplayers, maxplayers, thumbnail, image, description, categories from games left join extra on (games.objectid = extra.objectid)"
+
 /*
 
 */
-router.get('/api/games', function(req, res) {
+router.get('/api/games', function(req, res) { 
     if (/\?.+/.test(req.url)) {
         executeQuery(req.query,res,false)
     } else {
-        db.all("select * from games", function(err,games){
+        db.all(query, function(err,games){
             if (err)
                 throw err
             res.json({games:games})
@@ -63,7 +65,7 @@ router.get('/api/games/random/:n',function(req,res){
 
 */
 router.get('/api/games/:id',function(req,res){
-    db.get("select * from games where objectid=" + req.params.id, function(err,game){
+    db.get(query + " where games.objectid=" + req.params.id, function(err,game){
         if (err)
             throw err
         res.json({game:game})
