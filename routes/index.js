@@ -10,7 +10,7 @@ var db = new sqlite3.Database('db/bgg.sqlite', function(err){
     console.log("Connected to sqlite3 database bgg")
 })
 
-var query ="select objectname, games.objectid, rank, playingtime, minplayers, maxplayers, thumbnail, image, description, categories from games left join extra on (games.objectid = extra.objectid)"
+var query ="select objectname, games.objectid, rank, playingtime, minplayers, maxplayers, thumbnail, image, description, categories, bggbestplayers from games left join extra on (games.objectid = extra.objectid)"
 
 /*
 

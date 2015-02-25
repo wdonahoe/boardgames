@@ -13,6 +13,10 @@ img {
   margin: 0px 15px 15px 0px;
 }
 
+.pimage {
+	float: left;	
+}
+
 .bgg_thumb_wrapper {
     padding : .5em;
 }
